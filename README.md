@@ -29,6 +29,38 @@
 - `apps/backend` 和 `apps/admin-web` 作为独立 git 仓库管理
 - 仓库地址和默认开发分支记录在 `workspace.repos.json`
 
+## Git 使用约定
+
+当前工作区使用三层 Git 边界：
+
+- 根仓库 `家庭媒体`: 管理工作区文档、脚本、`workspace.repos.json` 和根级说明文件
+- 子仓库 `apps/backend`: 管理后端源码、后端配置、后端文档和 HTTP 示例
+- 子仓库 `apps/admin-web`: 管理前端源码、前端依赖和前端模块文档
+
+日常使用建议：
+
+- 修改 `scripts/`、`docs/`、`README.md`、`AGENTS.md` 或 `workspace.repos.json` 时，在根仓库提交
+- 修改后端代码或后端模块文档时，在 `apps/backend` 仓库提交
+- 修改前端代码或前端模块文档时，在 `apps/admin-web` 仓库提交
+
+建议先确认自己当前所在仓库，再执行 `git status`、`git add`、`git commit` 和 `git push`。
+
+根仓库不会跟踪以下内容：
+
+- `storage/`
+- `.run/`
+- `runtime/`
+- `infra/minio` 下的本地二进制
+- `apps/backend` 和 `apps/admin-web` 的仓库内容
+
+常用检查命令：
+
+```bash
+git status
+git -C apps/backend status
+git -C apps/admin-web status
+```
+
 首次拉取外部仓库：
 
 ```bash
