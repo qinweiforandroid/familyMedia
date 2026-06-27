@@ -1,0 +1,23 @@
+.DS_Store
+**/.DS_Store
+
+# Local runtime and service state
+.run/
+
+# Workspace-level runtime assets
+runtime/
+storage/
+infra/minio/minio
+infra/minio/mc
+infra/minio/minio.parts/
+infra/minio/minio.new
+
+# App-level generated content
+apps/backend/
+apps/admin-web/
+apps/backend/.gradle/
+apps/backend/build/
+apps/backend/log/
+apps/admin-web/node_modules/
+apps/admin-web/dist/
+apps/admin-web/coverage/

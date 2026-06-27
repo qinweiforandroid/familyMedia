@@ -1,0 +1,16 @@
+{
+  "repos": [
+    {
+      "name": "backend",
+      "path": "apps/backend",
+      "url": "git@github.com:qinweiforandroid/code.git",
+      "branch": "main"
+    },
+    {
+      "name": "admin-web",
+      "path": "apps/admin-web",
+      "url": "git@github.com:qinweiforandroid/code-admin-web.git",
+      "branch": "feature/0.0.1_admin-backoffice"
+    }
+  ]
+}
