@@ -45,7 +45,7 @@ ensure_mysql_schema() {
     echo "mysql client not found in PATH" >&2
     exit 1
   fi
-  "$MYSQL_BIN" -uroot -e "create database if not exists db_code default character set utf8mb4 collate utf8mb4_unicode_ci;"
+  MYSQL_PWD="${DB_PASSWORD:-}" "$MYSQL_BIN" -uroot -e "create database if not exists db_code default character set utf8mb4 collate utf8mb4_unicode_ci;"
 }
 
 ensure_minio_bucket() {
