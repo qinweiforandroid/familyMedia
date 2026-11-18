@@ -22,6 +22,18 @@ FRONTEND_PID_FILE="$PID_DIR/frontend.pid"
 
 mkdir -p "$LOG_DIR" "$PID_DIR"
 
+# 本地开发环境变量（数据库密码等），该文件在 .run/ 下不会被提交
+ENV_LOCAL_FILE="$RUN_DIR/env.local"
+
+load_local_env() {
+  if [[ -f "$ENV_LOCAL_FILE" ]]; then
+    # shellcheck disable=SC1090
+    source "$ENV_LOCAL_FILE"
+  fi
+}
+
+load_local_env
+
 is_listening() {
   local port="$1"
   lsof -iTCP:"$port" -sTCP:LISTEN >/dev/null 2>&1
