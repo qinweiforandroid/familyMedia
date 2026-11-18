@@ -16,7 +16,9 @@ fi
 echo "Starting admin web..."
 (
   cd "$FRONTEND_DIR"
-  nohup "$NODE_BIN" node_modules/vite/bin/vite.js --host 0.0.0.0 --port 5173 \
+  # 清除注入的 NODE_OPTIONS shim：其批量删除保护会拦截 Vite 清理
+  # node_modules/.vite 依赖缓存（>50 文件），导致 dev server 崩溃退出。
+  NODE_OPTIONS= nohup "$NODE_BIN" node_modules/vite/bin/vite.js --host 0.0.0.0 --port 5173 \
     >"$FRONTEND_LOG" 2>&1 &
   echo $! >"$FRONTEND_PID_FILE"
 )
